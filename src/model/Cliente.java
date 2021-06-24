@@ -1,10 +1,10 @@
 package model;
-/**
- *
- * @author jeffe
- */
+
+import Dao.ClienteDAO;
+
 public final class Cliente {
-    private int ID = 0;
+
+    private int codigo = 0;
     private String nome = null;
     private String cpf = null;
     private String fone = null;
@@ -17,6 +17,16 @@ public final class Cliente {
         setFone(fone);
         setCelular(celular);
         setEmail(email);
+        gravar();
+    }
+    
+    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
     
     public String getNome() {
@@ -69,7 +79,15 @@ public final class Cliente {
               "Email...: [" + getEmail() + "]\n";
         return ret;
     }
-
+    
+    
+    private void gravar(){
+        ClienteDAO dao = new ClienteDAO();
+        int codigo = dao.create(this);
+        if (codigo >= 0){
+            setCodigo(codigo);
+        } 
+    }
 }
 
 

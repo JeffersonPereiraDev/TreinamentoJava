@@ -4,6 +4,7 @@ package util;
  *
  * @author jeffe
  */
+
 public class Converte {
     
     public static double textToValue (String txt) {

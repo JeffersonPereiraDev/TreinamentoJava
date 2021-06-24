@@ -1,15 +1,14 @@
 package model;
-/**
- *
- * @author jeffe
- */
+
+import Dao.ProdutoDAO;
+
 public class Produto {
     private int codigo = 0;
     private String descricao = null;
-    private int estoque;
+    private int estoque = 0;
     private boolean ativo = false;
-    private double custo;
-    private double valor;
+    private double custo = 0;
+    private double valor = 0;
     
     public Produto (int codigo, String descricao, int estoque,double custo, double valor){
         setCodigo(codigo);
@@ -17,7 +16,8 @@ public class Produto {
         setEstoque(estoque);
         setValor(valor);
         setCusto(custo);
-        setAtivo(true);    
+        setAtivo(true);
+        gravar();
     }
 
     public int getCodigo() {
@@ -82,6 +82,13 @@ public class Produto {
         
         return ret;
     }
-
+    
+    private void gravar(){
+        ProdutoDAO dao = new ProdutoDAO();
+        int codigo = dao.create(this);
+        if (codigo > 0){
+            setCodigo(codigo);
+        } 
+    }
     
 }
