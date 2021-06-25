@@ -30,6 +30,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         pnButtons = new javax.swing.JPanel();
         btGravar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
+        btPesquisar = new javax.swing.JButton();
+        tfCod = new javax.swing.JTextField();
+        btAltera = new javax.swing.JButton();
+        btDeleta = new javax.swing.JButton();
+        btConsultar = new javax.swing.JButton();
         tbTela = new javax.swing.JTabbedPane();
         pnCliente = new javax.swing.JPanel();
         lbCliNome = new javax.swing.JLabel();
@@ -53,8 +58,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         lbProVenda = new javax.swing.JLabel();
         tfProCusto = new javax.swing.JFormattedTextField();
         tfProVenda = new javax.swing.JFormattedTextField();
-        lbProCodigo = new javax.swing.JLabel();
-        tfProCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,16 +91,49 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        btPesquisar.setText("Pesquisar");
+        btPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisarActionPerformed(evt);
+            }
+        });
+
+        btAltera.setText("Alterar");
+        btAltera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlteraActionPerformed(evt);
+            }
+        });
+
+        btDeleta.setText("Deletar");
+        btDeleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeletaActionPerformed(evt);
+            }
+        });
+
+        btConsultar.setText("Consultar");
+
         javax.swing.GroupLayout pnButtonsLayout = new javax.swing.GroupLayout(pnButtons);
         pnButtons.setLayout(pnButtonsLayout);
         pnButtonsLayout.setHorizontalGroup(
             pnButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnButtonsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(tfCod, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btPesquisar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btAltera)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btDeleta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btConsultar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btGravar)
                 .addGap(18, 18, 18)
                 .addComponent(btLimpar)
-                .addGap(73, 73, 73))
+                .addGap(41, 41, 41))
         );
         pnButtonsLayout.setVerticalGroup(
             pnButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +141,12 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(pnButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btGravar)
-                    .addComponent(btLimpar))
+                    .addComponent(btLimpar)
+                    .addComponent(btPesquisar)
+                    .addComponent(tfCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAltera)
+                    .addComponent(btDeleta)
+                    .addComponent(btConsultar))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -224,8 +265,6 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        lbProCodigo.setText("Código:");
-
         javax.swing.GroupLayout pnProdutoLayout = new javax.swing.GroupLayout(pnProduto);
         pnProduto.setLayout(pnProdutoLayout);
         pnProdutoLayout.setHorizontalGroup(
@@ -240,36 +279,28 @@ public class TelaCadastro extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addComponent(spProEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
+                                .addGap(67, 67, 67)
                                 .addComponent(cpAtivo))
                             .addGroup(pnProdutoLayout.createSequentialGroup()
-                                .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbProDescricao)
-                                    .addComponent(lbProCodigo))
+                                .addComponent(lbProDescricao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfProDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfProCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(tfProDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnProdutoLayout.setVerticalGroup(
             pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnProdutoLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbProCodigo)
-                    .addComponent(tfProCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbProDescricao)
                     .addComponent(tfProDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(spProEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cpAtivo))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(pnProPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -315,6 +346,30 @@ public class TelaCadastro extends javax.swing.JFrame {
         int v = (int) spProEstoque.getValue();
         if (v < 0) spProEstoque.setValue(0);
     }//GEN-LAST:event_spProEstoqueStateChanged
+
+    private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
+        if(tbTela.getSelectedComponent() == pnCliente){
+            consultaCliente();
+        }else if(tbTela.getSelectedComponent() == pnProduto){
+            consultaProduto();
+        }
+    }//GEN-LAST:event_btPesquisarActionPerformed
+
+    private void btDeletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletaActionPerformed
+        if(tbTela.getSelectedComponent() == pnCliente){
+            deleteCliente();
+        }else if (tbTela.getSelectedComponent() == pnProduto){
+            deleteProduto();
+        }
+    }//GEN-LAST:event_btDeletaActionPerformed
+
+    private void btAlteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlteraActionPerformed
+        if(tbTela.getSelectedComponent() == pnCliente){
+            upadateCliente();
+        }else if(tbTela.getSelectedComponent() == pnProduto){
+            updateProduto();
+        }
+    }//GEN-LAST:event_btAlteraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,13 +424,12 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
     
     private void limparProduto(){
-        tfProCodigo.setText("");
         tfProDescricao.setText("");
         spProEstoque.setValue(0);
         cpAtivo.setSelected(false);
         tfProCusto.setText("0,00");
         tfProVenda.setText("0,00");
-        tfProCodigo.requestFocus();
+        tfProDescricao.requestFocus();
     }
     
     private void gravarCliente(){
@@ -389,18 +443,88 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
     
     private void gravarProduto(){
-        int codigo = Integer.parseInt(tfProCodigo.getText());
         String descricao = tfProDescricao.getText();
         int estoque = (int) spProEstoque.getValue();
         double custo = Converte.textToValue(tfProCusto.getText());
         double valor = Converte.textToValue(tfProVenda.getText());
-        System.out.println(new Produto(codigo, descricao, estoque, custo, valor));
+        System.out.println(new Produto(descricao, estoque, custo, valor));
         limparProduto();
     }
     
+    private void consultaCliente(){
+        Cliente cliente = new Cliente();
+        cliente = Dao.ClienteDAO.getInstance().findByCodigo(Integer.parseInt(tfCod.getText()));
+        tfCliNome.setText(cliente.getNome());
+        tfCliCPF.setText(cliente.getCpf());
+        tfCliFone.setText(cliente.getFone());
+        tfCliCelular.setText(cliente.getCelular());
+        tfCliEmail.setText(cliente.getEmail());
+    }
+    
+    private void consultaProduto(){
+        Produto produto = new Produto();
+        produto = Dao.ProdutoDAO.getInstance().findByCodigo(Integer.parseInt(tfCod.getText()));
+        tfProDescricao.setText(produto.getDescricao());
+        if (produto.isAtivo() == true)
+        {
+            cpAtivo.setSelected(true);
+        }else{
+            cpAtivo.setSelected(false);
+        }
+        spProEstoque.setValue(produto.getEstoque());
+        //tfProCusto.setText(String.valueOf(produto.getCusto()));
+        //tfProValor.setText(String.valueOf(produto.getValor()));
+        tfProCusto.setText(String.format("%.2f",produto.getCusto()));
+        tfProVenda.setText(String.format("%.2f",produto.getValor()));        
+        
+    }
+    
+    private void deleteCliente(){
+        Dao.ClienteDAO.getInstance().delete(Integer.parseInt(tfCod.getText()));
+        limparCliente();
+    }
+    
+    private void deleteProduto(){
+        Dao.ProdutoDAO.getInstance().delete(Integer.parseInt(tfCod.getText()));
+        limparProduto();
+    }
+    
+    private void upadateCliente(){
+        int codigo = Integer.parseInt(tfCod.getText());
+        String nome = tfCliNome.getText();
+        String cpf = tfCliCPF.getText();
+        String fone = tfCliFone.getText();
+        String celular = tfCliCelular.getText();
+        String email = tfCliEmail.getText();
+        Cliente cliente = new Cliente(codigo, nome, cpf, fone, celular, email);
+        Dao.ClienteDAO.getInstance().update(cliente);
+    }
+    
+    private void updateProduto(){
+        int codigo = Integer.parseInt(tfCod.getText());
+        String descricao = tfProDescricao.getText();
+        int estoque = (int) spProEstoque.getValue();
+        boolean ativo;
+        if(cpAtivo.isSelected()== true){
+            ativo = true;
+        }else
+        {
+            ativo = false;
+        }
+        double custo = Converte.textToValue(tfProCusto.getText());
+        double valor = Converte.textToValue(tfProVenda.getText());
+        Produto produto = new Produto(codigo,descricao,ativo,estoque,custo,valor);
+        Dao.ProdutoDAO.getInstance().update(produto);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAltera;
+    private javax.swing.JButton btConsultar;
+    private javax.swing.JButton btDeleta;
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btPesquisar;
     private javax.swing.JCheckBox cpAtivo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -409,7 +533,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel lbCliEmail;
     private javax.swing.JLabel lbCliFone;
     private javax.swing.JLabel lbCliNome;
-    private javax.swing.JLabel lbProCodigo;
     private javax.swing.JLabel lbProCusto;
     private javax.swing.JLabel lbProDescricao;
     private javax.swing.JLabel lbProVenda;
@@ -426,7 +549,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField tfCliEmail;
     private javax.swing.JFormattedTextField tfCliFone;
     private javax.swing.JTextField tfCliNome;
-    private javax.swing.JTextField tfProCodigo;
+    private javax.swing.JTextField tfCod;
     private javax.swing.JFormattedTextField tfProCusto;
     private javax.swing.JTextField tfProDescricao;
     private javax.swing.JFormattedTextField tfProVenda;

@@ -19,7 +19,19 @@ public final class Cliente {
         setEmail(email);
         gravar();
     }
+
+    public Cliente(int codigo, String nome, String cpf, String fone,String celular, String email) {
+        setCodigo(codigo);
+        setNome(nome);
+        setCpf(cpf);
+        setFone(fone);
+        setCelular(celular);
+        setEmail(email);
+    }
     
+    public Cliente(){
+        
+    }
     
     public int getCodigo() {
         return codigo;

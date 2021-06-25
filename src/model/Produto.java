@@ -10,7 +10,7 @@ public class Produto {
     private double custo = 0;
     private double valor = 0;
     
-    public Produto (int codigo, String descricao, int estoque,double custo, double valor){
+    public Produto (String descricao, int estoque,double custo, double valor){
         setCodigo(codigo);
         setDescricao(descricao);
         setEstoque(estoque);
@@ -18,6 +18,19 @@ public class Produto {
         setCusto(custo);
         setAtivo(true);
         gravar();
+    }
+    
+    public Produto(int codigo, String descricao,boolean ativo, int estoque, double custo, double valor) {
+        setCodigo(codigo);
+        setDescricao(descricao);
+        setEstoque(estoque);
+        setValor(valor);
+        setCusto(custo);
+        setAtivo(ativo);
+    }
+
+    public Produto() {
+        
     }
 
     public int getCodigo() {

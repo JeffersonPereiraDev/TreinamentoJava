@@ -2,7 +2,7 @@ package Dao;
 import java.sql.*;
 
 public class ModuloConexao {
-    private static final String URL = "jdbc:sqlite:C:\\Java\\Treinamento\\db\\TreinamentoDB.db";
+    private static final String URL = "jdbc:sqlite:C:/Users/jeffe/Documents/Java/Treinamento/db/TreinamentoDB.db";
     
     public static Connection getConection() {
         try{ 
@@ -36,7 +36,7 @@ public class ModuloConexao {
         } catch (SQLException e){
             throw new RuntimeException("Erro no fechamento do result set");
         }
-    }
+    }   
     
     
     
