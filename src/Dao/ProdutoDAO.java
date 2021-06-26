@@ -64,9 +64,9 @@ public class ProdutoDAO implements Dao.Persistencia<Produto> {
                 int codigo = rs.getInt("Codigo");
                 String descricao = rs.getString("Descricao");
                 int estoque = rs.getInt("Estoque");
+                Boolean ativo = rs.getBoolean("Ativo");
                 Double custo = rs.getDouble("Custo");
                 Double valor = rs.getDouble("Valor");
-                Boolean ativo = rs.getBoolean("Ativo");
                 p = new Produto(codigo, descricao, ativo , estoque, custo, valor);
             }
             
@@ -136,7 +136,7 @@ public class ProdutoDAO implements Dao.Persistencia<Produto> {
                 int estoque = rs.getInt("Estoque");
                 double custo = rs.getDouble("Custo");
                 double valor = rs.getDouble("Valor");
-                //lista.add(new Produto(codigo,descricao,ativo,estoque,custo,valor));
+                lista.add(new Produto(codigo,descricao,ativo,estoque,custo,valor));
             }
             
         }catch(SQLException ex){

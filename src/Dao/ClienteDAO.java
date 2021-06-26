@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import model.Cliente;
 
@@ -118,7 +119,29 @@ public class ClienteDAO implements Dao.Persistencia<Cliente>{
 
     @Override
     public List<Cliente> read() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = ModuloConexao.getConection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Clientes ORDER BY Nome";
+        List<Cliente> lista = new ArrayList<Cliente>();
+        try{
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                int codigo = rs.getInt("Codigo");
+                String nome = rs.getString("Nome");
+                String cpf = rs.getString("CPF");
+                String fone = rs.getString("Fone");
+                String celular = rs.getString("Celular");
+                String email = rs.getString("Email");
+                lista.add(new Cliente(codigo, nome, cpf, fone, celular, email));
+            }
+        }catch (SQLException ex){
+            throw new RuntimeException("Erro no SELECT");
+        } finally{
+            ModuloConexao.closeConnection(con, pst, rs);
+        }
+        return lista;
     }
 
 }

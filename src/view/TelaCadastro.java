@@ -113,6 +113,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         btConsultar.setText("Consultar");
+        btConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnButtonsLayout = new javax.swing.GroupLayout(pnButtons);
         pnButtons.setLayout(pnButtonsLayout);
@@ -370,6 +375,17 @@ public class TelaCadastro extends javax.swing.JFrame {
             updateProduto();
         }
     }//GEN-LAST:event_btAlteraActionPerformed
+
+    private void btConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarActionPerformed
+        String cadastro = null;
+        if (tbTela.getSelectedComponent() == pnCliente){
+            cadastro = "Cliente";
+        }else if (tbTela.getSelectedComponent() == pnProduto){
+            cadastro = "Produto";
+        }
+        TelaConsulta tela = new TelaConsulta(cadastro);
+        tela.setVisible(true);
+    }//GEN-LAST:event_btConsultarActionPerformed
 
     /**
      * @param args the command line arguments

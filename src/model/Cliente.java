@@ -1,6 +1,8 @@
 package model;
 
 import Dao.ClienteDAO;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public final class Cliente {
 
@@ -100,6 +102,22 @@ public final class Cliente {
             setCodigo(codigo);
         } 
     }
+    
+    
+    public static DefaultTableModel getTableModel(){
+        List<Cliente> lista = ClienteDAO.getInstance().read();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Nome");
+        modelo.addColumn("Telefone");
+        modelo.addColumn("Celular");
+        modelo.addColumn("Email");
+        for (Cliente c: lista){
+            String[] reg = {c.getNome(), c.getFone(), c.getCelular(), c.getEmail()};
+            modelo.addRow(reg);
+        }
+        return modelo;
+    }
+    
 }
 
 

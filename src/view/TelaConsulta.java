@@ -5,6 +5,9 @@
  */
 package view;
 
+import model.Cliente;
+import model.Produto;
+
 /**
  *
  * @author jeffe
@@ -14,10 +17,34 @@ public class TelaConsulta extends javax.swing.JFrame {
     /**
      * Creates new form TelaConsulta
      */
-    public TelaConsulta() {
+    private TelaConsulta() {
         initComponents();
     }
+        
+    public TelaConsulta(String cadastro) {
+        initComponents();
+        if (cadastro == null){
+            cadastro = "Cliente";
+            montaTabela(cadastro);
+        }
+        
+    }
 
+    private void montaTabelaCliente(){
+        tbConsulta.setModel(Cliente.getTableModel());
+    }
+    
+    private void montaTableProduto(){
+        tbConsulta.setModel(Produto.getTableModel());
+    }
+    
+    private void montaTabela(String cadastro){
+        if (cadastro.equals("Cliente")){
+            montaTabelaCliente();
+        }else if (cadastro.equals("Produto")){
+            montaTableProduto();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,20 +55,20 @@ public class TelaConsulta extends javax.swing.JFrame {
     private void initComponents() {
 
         pnTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbTitulo = new javax.swing.JLabel();
         pnBotao = new javax.swing.JPanel();
         btVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbConsulta = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de consulta");
 
         pnTitulo.setBackground(new java.awt.Color(52, 131, 183));
         pnTitulo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel1.setText("Consulta");
+        lbTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lbTitulo.setText("Consulta");
 
         javax.swing.GroupLayout pnTituloLayout = new javax.swing.GroupLayout(pnTitulo);
         pnTitulo.setLayout(pnTituloLayout);
@@ -49,14 +76,14 @@ public class TelaConsulta extends javax.swing.JFrame {
             pnTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTituloLayout.createSequentialGroup()
                 .addGap(170, 170, 170)
-                .addComponent(jLabel1)
+                .addComponent(lbTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnTituloLayout.setVerticalGroup(
             pnTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTituloLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel1)
+                .addComponent(lbTitulo)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -87,18 +114,19 @@ public class TelaConsulta extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbConsulta);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,6 +151,7 @@ public class TelaConsulta extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -166,10 +195,10 @@ public class TelaConsulta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btVoltar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbTitulo;
     private javax.swing.JPanel pnBotao;
     private javax.swing.JPanel pnTitulo;
+    private javax.swing.JTable tbConsulta;
     // End of variables declaration//GEN-END:variables
 }

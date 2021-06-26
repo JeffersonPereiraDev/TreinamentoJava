@@ -1,6 +1,8 @@
 package model;
 
 import Dao.ProdutoDAO;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class Produto {
     private int codigo = 0;
@@ -102,6 +104,20 @@ public class Produto {
         if (codigo > 0){
             setCodigo(codigo);
         } 
+    }
+    
+    public static DefaultTableModel getTableModel(){
+        List<Produto> lista = ProdutoDAO.getInstance().read();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("descricao");
+        modelo.addColumn("Estoque");
+        modelo.addColumn("Custo");
+        modelo.addColumn("Valor");
+        for (Produto p: lista) {
+            String[] reg = {p.getDescricao(), String.valueOf(p.getEstoque()), String.valueOf(p.getCusto()), String.valueOf(p.getValor())};
+            modelo.addRow(reg);
+        }
+        return modelo;
     }
     
 }
